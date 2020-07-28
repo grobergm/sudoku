@@ -9,7 +9,7 @@
 				:startSec='seconds'
 				ref='timer'
 			/>
-			<div>Difficulty: {{difficulty}}</div>
+			<div>Difficulty: {{diff}}</div>
 			<div class='mistakes'>Mistakes: {{mistakes}}</div>
 		</div>
 		<div class='grid'>
@@ -127,7 +127,7 @@ export default {
 			seconds: 0,
 			minutes: 0,
 			mistakes: 0,
-			difficulty: null,
+			// difficulty: null,
 		};
 	},
 
@@ -281,11 +281,11 @@ export default {
 			});
 
 			this.solution = newSudoku;
-			this.difficulty = this.diff.toFixed(2);
+			// this.difficulty = this.diff.toFixed(2);
 		},
 
 		saveGame() {
-			const { sudoku, solution, mistakes, difficulty } = this;
+			const { sudoku, solution, mistakes, diff } = this;
 
 			const { minutes, seconds } = this.$refs.timer;
 
@@ -295,7 +295,7 @@ export default {
 				seconds,
 				minutes,
 				mistakes,
-				difficulty,
+				diff,
 			};
 
 			localStorage.currentGame = JSON.stringify(currentGame);

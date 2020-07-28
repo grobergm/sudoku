@@ -19,39 +19,20 @@
 		<div
 			v-else
 			class='setup'
-			@mouseup='dragging = false'
 		>
 			<h1>Sudoku</h1>
 			<div class='difficulty'>
-				Difficulty
-				<div
-					ref='bar'
-					class='bar'
-					@mousemove="adjustDifficulty"
-					title='Difficulty'
-				>
-					<div
-						class='slider'
-						:style='{
-              transform: `translateX(${diff}em)`,
-              }'
-					>
-						<div
-							class='fill'
-							:class='diffClass'
-						></div>
-						<div
-							@mousedown="startDragging"
-							class='knob'
-							:style='{
-              cursor: dragging ? "grabbing" : "grab"
-              }'
-						>
-							{{diff | round}}
-
-						</div>
-					</div>
+				<div>
+					Difficulty
 				</div>
+
+				<input
+					type='range'
+					min='1'
+					max='10'
+					v-model.number='diff'
+				/>
+
 			</div>
 			<button
 				@click='currentGame = false; start=true'
@@ -76,52 +57,17 @@ export default {
 	name: "App",
 	data() {
 		return {
-			dragging: false,
+			diff: 5,
 			start: false,
 			darkMode: false,
 			showDetails: true,
 			currentGame: false,
-			diff: 5,
-			barLeft: null,
 			hasCurrentGame: false,
 		};
 	},
 	components: {
 		Sudoku,
 		Menu,
-	},
-
-	computed: {
-		diffClass() {
-			if (this.diff <= 4) {
-				return "easy";
-			} else if (this.diff >= 7) {
-				return "hard";
-			} else {
-				return "medium";
-			}
-		},
-	},
-
-	methods: {
-		startDragging() {
-			const barRect = this.$refs.bar.getBoundingClientRect();
-
-			this.barLeft = barRect.left;
-			this.dragging = true;
-		},
-
-		adjustDifficulty({ clientX }) {
-			if (this.dragging) {
-				this.diff = Math.max(Math.min((clientX - this.barLeft) / 16, 9.5), 1);
-			}
-		},
-	},
-
-	filters: {
-		round(value) {
-			return Math.round(value);
-		},
 	},
 
 	created() {
@@ -226,7 +172,6 @@ button.continue:hover {
 .fill {
 	position: absolute;
 	z-index: 2;
-	/* background: skyblue; */
 	height: 100%;
 	width: 100%;
 
@@ -301,9 +246,6 @@ button.continue:hover {
 @media print {
 	.sudoku {
 		display: block;
-		/* flex-direction: column;
-	justify-content: center;
-	align-items: center; */
 	}
 
 	.cell {

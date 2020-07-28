@@ -43,4 +43,7 @@ export default {
 </script>
 
 <style>
+.timer {
+	width: 3em;
+}
 </style>
