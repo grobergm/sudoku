@@ -6,7 +6,7 @@ Developed By Matt Groberg
 
 This is a smiple and fast sudoku generator. It was create using the Vue Cli, and runs entirely on the client side. [Click Here](https://grobergm.github.io/sudoku/) to play! Your game will be saved in the browser's local storage when you exit, along with your past scores.
 
-<img src='@/assets/screenshot.png'>
+<img src='screenshot.png'>
 
 ## How To Play
 
