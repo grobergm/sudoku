@@ -177,15 +177,6 @@ export default {
 				return "invalid";
 			}
 
-			if (this.rowSelected === rowIndex || this.colSelected === colIndex) {
-				if (this.rowSelected === rowIndex && this.colSelected === colIndex) {
-					return "";
-				}
-				return "highlight";
-			}
-			if (cell === "") {
-				return "";
-			}
 			const row = this.sudoku[rowIndex],
 				col = this.getCol(colIndex, this.sudoku),
 				square = this.getSquare(rowIndex, colIndex, this.sudoku),
@@ -194,8 +185,21 @@ export default {
 				squareFilled = this.checkFilled(square);
 
 			if (rowFilled || colFilled || squareFilled) {
+				if (this.rowSelected === rowIndex || this.colSelected === colIndex) {
+					return "completeHighlight";
+				}
 				return "complete";
 			}
+
+			if (this.rowSelected === rowIndex || this.colSelected === colIndex) {
+				if (this.rowSelected === rowIndex && this.colSelected === colIndex) {
+					return "";
+				}
+				return "highlight";
+			}
+			// if (cell === "") {
+			// 	return "";
+			// }
 		},
 
 		checkFilled(array) {
@@ -360,6 +364,7 @@ export default {
 
 .row {
 	border-bottom: 1px solid #1d2124;
+	/* width: 100%; */
 }
 
 .row:nth-child(3n) {
@@ -386,7 +391,11 @@ export default {
 
 .cell.highlight {
 	/* color: #f8f9fa; */
-	background: #fff3cd;
+	background: #fae5a2;
+}
+
+.cell.completeHighlight {
+	background-color: #99eead;
 }
 
 .cell.invalid {
