@@ -150,26 +150,16 @@ button.continue:hover {
 	background: #5a6268;
 }
 
-@media screen and (max-height: 650px) {
-	.sudoku {
-		justify-content: flex-end;
-	}
-
-	.menu {
-		top: 0.25em;
-		left: 0.25em;
-	}
-
-	.menuTitle {
-		display: none;
-	}
-}
-
 @media screen and (max-width: 550px) {
 	.sudoku {
-		width: 100vw;
-		/* margin-top: 2em; */
-		/* justify-content: flex-end; */
+		/* display: block; */
+		/* position: absolute; */
+		justify-content: flex-start;
+		margin-top: 4em;
+		/* left: 0; */
+		/* top: 4em; */
+		/* right: 0; */
+		height: 90vh;
 	}
 
 	.grid,
@@ -177,7 +167,6 @@ button.continue:hover {
 		font-size: 5vw;
 	}
 	.digits {
-		width: 100vw;
 		justify-content: center;
 		margin-top: 0.5em;
 	}
@@ -185,6 +174,16 @@ button.continue:hover {
 	.cell {
 		height: 2em;
 		width: 2em;
+	}
+
+	.menu {
+		/* top: 0.25em;
+		left: 0.25em; */
+		width: 90vw;
+	}
+
+	.menuTitle {
+		display: none;
 	}
 
 	.menuList {
