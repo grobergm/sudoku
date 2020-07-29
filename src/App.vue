@@ -150,72 +150,36 @@ button.continue:hover {
 	background: #5a6268;
 }
 
-.bar {
-	position: relative;
-	height: 1.5em;
-	width: 10em;
-	border-radius: 20px;
-	border: 2px solid currentColor;
-	overflow: hidden;
-	background: #f8f9fa;
-}
+@media screen and (max-height: 650px) {
+	.sudoku {
+		justify-content: flex-end;
+	}
 
-.slider {
-	position: absolute;
-	z-index: 1;
-	top: 0;
-	left: -10em;
-	height: 1.5em;
-	width: 10em;
-}
+	.menu {
+		top: 0.25em;
+		left: 0.25em;
+	}
 
-.fill {
-	position: absolute;
-	z-index: 2;
-	height: 100%;
-	width: 100%;
-
-	transition: background 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-
-.fill.easy {
-	background: #28a745;
-}
-.fill.medium {
-	background: #34459c;
-}
-.fill.hard {
-	background: #dc3545;
-}
-
-.knob {
-	position: absolute;
-	right: -0.5em;
-	z-index: 3;
-	background: #007bff;
-	color: #f8f9fa;
-	display: flex;
-	justify-content: center;
-	align-items: baseline;
-	user-select: none;
-	height: 1.5em;
-	width: 1.5em;
-	border-radius: 50%;
+	.menuTitle {
+		display: none;
+	}
 }
 
 @media screen and (max-width: 550px) {
 	.sudoku {
-		font-size: 5vw;
 		width: 100vw;
+		/* margin-top: 2em; */
+		/* justify-content: flex-end; */
 	}
 
-	.digits {
-		width: 100vw;
-	}
-
+	.grid,
 	.digits button {
 		font-size: 5vw;
-		padding: 0.3em;
+	}
+	.digits {
+		width: 100vw;
+		justify-content: center;
+		margin-top: 0.5em;
 	}
 
 	.cell {

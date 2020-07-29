@@ -26,7 +26,6 @@
 					@mouseup='handleSelect(rowIndex, colIndex, $event)'
 					@keydown.prevent='typeDigit'
 					tabindex="0"
-					:style="showDetails ? null : {backgroundColor:'#f8f9fa', color:'#1d2124'}"
 				>
 					{{cell}}
 				</div>
@@ -171,6 +170,9 @@ export default {
 		},
 
 		getClass(cell, rowIndex, colIndex) {
+			if (this.showDetails === false) {
+				return "";
+			}
 			if (cell !== this.solution[rowIndex][colIndex] && cell !== "") {
 				return "invalid";
 			}
@@ -349,6 +351,11 @@ export default {
 .row,
 .digits {
 	display: flex;
+}
+
+.digits button {
+	font-size: 1.5em;
+	margin: 0.2em;
 }
 
 .row {
